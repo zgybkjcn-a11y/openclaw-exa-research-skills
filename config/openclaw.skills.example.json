@@ -1,0 +1,10 @@
+{
+  "comment": "Example OpenClaw config fragment. Do not paste blindly; merge into your own ~/.openclaw/openclaw.json if needed.",
+  "skills": {
+    "load": {
+      "extraDirs": [
+        "/absolute/path/to/openclaw-exa-research-skills/skills"
+      ]
+    }
+  }
+}
