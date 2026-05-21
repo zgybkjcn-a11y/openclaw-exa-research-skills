@@ -20,7 +20,7 @@
 - 企业情报收集
 - 新闻/融资/市场动态追踪
 - 公开 LinkedIn 联系人线索
-- X/Twitter 公开动态搜索
+- X/Twitter 公开动态搜索（不依赖已废弃的 Exa tweet category）
 - Facebook 公开页面核验
 
 ### foreign-trade-research
@@ -130,8 +130,8 @@ python3 scripts/check_no_secrets.py
 
 其中：
 
-- Exa 公司/LinkedIn/tweet 类检索依赖 `exa_search`。
-- X/Twitter 实时讨论可用 `grok_search platform="Twitter"` 补强。
+- Exa 公司/LinkedIn 类检索依赖 `exa_search`。
+- X/Twitter 实时讨论优先用 `grok_search platform="Twitter"`，或用 `site:x.com` / `site:twitter.com` 的普通网页搜索补强；不要再使用已废弃的 Exa `tweet` category。
 - Facebook 没有专用 Exa category，使用 `site:facebook.com` + 普通网页搜索/浏览器公开页面验证。
 
 ## 使用示例
@@ -175,6 +175,7 @@ python3 scripts/check_no_secrets.py
 - YAML frontmatter 是否可解析
 - 是否包含 `name` 和 `description`
 - 当前两个 skill 是否包含 LinkedIn / X / Facebook 公开搜索规则
+- 是否已经禁用旧的 Exa `tweet` category 指导，并保留 `grok_search platform="Twitter"` 或 `site:x.com` / `site:twitter.com` 替代口径
 - 配置模板是否没有明显明文密钥风险
 
 ## 发布到 GitHub

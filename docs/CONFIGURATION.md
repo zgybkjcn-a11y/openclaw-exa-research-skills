@@ -62,7 +62,7 @@ If a tool is unavailable, the agent should fall back to available search/fetch t
 The skills only instruct public-source lookup:
 
 - LinkedIn public profiles/pages via `exa_search category="linkedin profile"` and normal web queries.
-- X/Twitter public posts via `exa_search category="tweet"`, `grok_search platform="Twitter"`, or domain-limited web search.
+- X/Twitter public posts via `grok_search platform="Twitter"` when available, or domain-limited searches such as `site:x.com` / `site:twitter.com`. Do not use Exa’s deprecated tweet category.
 - Facebook public pages/posts via `site:facebook.com` searches and browser verification.
 
 They do not authorize logging in, scraping private content, bypassing access controls, or sending messages.
@@ -75,5 +75,7 @@ Run:
 python3 scripts/validate_skills.py
 python3 scripts/check_no_secrets.py
 ```
+
+`validate_skills.py` verifies skill frontmatter, required public LinkedIn/X/Facebook search guidance, and rejects deprecated Exa tweet-category guidance in skill instructions.
 
 The secret check is heuristic. Always review the final git diff before publishing.

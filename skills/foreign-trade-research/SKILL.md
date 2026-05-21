@@ -159,9 +159,10 @@ top [Product] companies in [Country] market share
 
 优先工具：
 
-- `exa_search` with `category: "tweet"`：检索公开 tweet / X 内容。
-- `grok_search` with `platform: "Twitter"`：补充实时讨论、趋势和平台内语义搜索。
-- 必要时结合 `tavily_search` / `dual_search` 搜索 `site:x.com` 或 `site:twitter.com` 页面。
+- `grok_search` with `platform: "Twitter"`：优先用于补充实时讨论、趋势和平台内语义搜索（如当前环境支持）。
+- `tavily_search` / `dual_search` / `web_search`：搜索 `site:x.com` 或 `site:twitter.com` 公开页面。
+- `exa_search`：不要再使用已废弃的 tweet 分类；可不指定 category，作为普通语义搜索补充。
+- `browser`：必要时打开公开 X/Twitter 页面做可视化验证；如页面要求登录或出现访问限制，不绕过。
 
 适合搜索的内容：
 

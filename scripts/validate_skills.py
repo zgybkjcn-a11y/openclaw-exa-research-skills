@@ -11,9 +11,27 @@ except ImportError:
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / "skills"
 EXPECTED = {
-    "exa-company-research": ["linkedin profile", "category: \"tweet\"", "Facebook 公开信息搜索"],
-    "foreign-trade-research": ["linkedin profile", "category: \"tweet\"", "Facebook 公开信息搜索"],
+    "exa-company-research": [
+        "linkedin profile",
+        "site:x.com",
+        "Facebook 公开信息搜索",
+        "不要再使用已废弃的 tweet 分类",
+    ],
+    "foreign-trade-research": [
+        "linkedin profile",
+        "site:x.com",
+        "Facebook 公开信息搜索",
+        "不要再使用已废弃的 tweet 分类",
+    ],
 }
+
+FORBIDDEN_SKILL_PHRASES = [
+    "`tweet`：",
+    "category=\"tweet\"",
+    "category='tweet'",
+    "tweet category 使用规则",
+    "tweet 分类使用规则",
+]
 
 OPTIONAL_FILES = [ROOT / ".env.example", ROOT / "config" / "openclaw.skills.example.json", ROOT / "config" / "openclaw.env.example.json", ROOT / "docs" / "CONFIGURATION.md"]
 
@@ -52,6 +70,11 @@ else:
         for phrase in required_phrases:
             if phrase not in text:
                 errors.append(f"missing phrase {phrase!r} in {skill_md}")
+        for phrase in FORBIDDEN_SKILL_PHRASES:
+            if phrase in text:
+                errors.append(
+                    f"deprecated Exa tweet category guidance remains in {skill_md}: {phrase!r}"
+                )
 
 for json_file in [ROOT / "config" / "openclaw.skills.example.json", ROOT / "config" / "openclaw.env.example.json"]:
     if json_file.exists():

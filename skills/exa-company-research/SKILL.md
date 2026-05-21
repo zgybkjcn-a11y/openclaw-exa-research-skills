@@ -70,13 +70,13 @@ allowed-tools: ["exa_search", "tavily_search", "grok_search", "ws_fetch", "web_f
 
 ### 4. Exa category 使用规则
 
-OpenClaw `exa_search` 的 `category` 应这样选：
+OpenClaw `exa_search` 的 `category` 只用于仍受支持的定向检索：
 
 - `company`：公司主页、公司基础信息
 - `news`：新闻报道、融资、并购、市场动态
-- `tweet`：X/Twitter 社交动态
 - `linkedin profile`：公开 LinkedIn 人员资料
-- 不确定时可不指定 category，或分多次搜索
+- X/Twitter 公开动态：不要再使用已废弃的 tweet 分类；优先用 `grok_search` with `platform: "Twitter"`，或用 `site:x.com` / `site:twitter.com` 的普通网页搜索补强
+- 不确定时可不指定 category，作为普通语义搜索，或分多次搜索
 
 ### 5. 输出结构
 
@@ -150,9 +150,10 @@ OpenClaw `exa_search` 的 `category` 应这样选：
 
 优先工具：
 
-- `exa_search` with `category: "tweet"`：检索公开 tweet / X 内容。
-- `grok_search` with `platform: "Twitter"`：补充实时讨论、趋势和平台内语义搜索。
-- 必要时结合 `tavily_search` / `dual_search` 搜索 `site:x.com` 或 `site:twitter.com` 页面。
+- `grok_search` with `platform: "Twitter"`：优先用于补充实时讨论、趋势和平台内语义搜索（如当前环境支持）。
+- `tavily_search` / `dual_search` / `web_search`：搜索 `site:x.com` 或 `site:twitter.com` 公开页面。
+- `exa_search`：不要再使用已废弃的 tweet 分类；可不指定 category，作为普通语义搜索补充。
+- `browser`：必要时打开公开 X/Twitter 页面做可视化验证；如页面要求登录或出现访问限制，不绕过。
 
 适合搜索的内容：
 
