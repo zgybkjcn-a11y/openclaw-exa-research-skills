@@ -14,12 +14,14 @@ EXPECTED = {
     "exa-company-research": [
         "linkedin profile",
         "site:x.com",
+        "TweetClaw",
         "Facebook 公开信息搜索",
         "不要再使用已废弃的 tweet 分类",
     ],
     "foreign-trade-research": [
         "linkedin profile",
         "site:x.com",
+        "TweetClaw",
         "Facebook 公开信息搜索",
         "不要再使用已废弃的 tweet 分类",
     ],

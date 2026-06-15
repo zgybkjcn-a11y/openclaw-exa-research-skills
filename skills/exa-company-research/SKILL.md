@@ -154,6 +154,7 @@ OpenClaw `exa_search` 的 `category` 只用于仍受支持的定向检索：
 - `tavily_search` / `dual_search` / `web_search`：搜索 `site:x.com` 或 `site:twitter.com` 公开页面。
 - `exa_search`：不要再使用已废弃的 tweet 分类；可不指定 category，作为普通语义搜索补充。
 - `browser`：必要时打开公开 X/Twitter 页面做可视化验证；如页面要求登录或出现访问限制，不绕过。
+- `@xquik/tweetclaw` OpenClaw 插件（可选）：当当前 workspace 已安装并允许 `explore` / `tweetclaw` 工具时，只把它用于 X/Twitter 公开信源补充，例如 tweet 搜索、回复检索、用户公开资料、followers/following 公开线索和用户公开时间线。先用 `explore` 确认只读 endpoint，再用 `tweetclaw` 记录查询词、endpoint、时间范围、公开链接和置信度。
 
 适合搜索的内容：
 
@@ -185,6 +186,7 @@ OpenClaw `exa_search` 的 `category` 只用于仍受支持的定向检索：
 - 只检索公开内容；不登录、不绕过访问限制。
 - 不自动关注、点赞、评论、转发、私信。
 - 如需使用用户账号、发送消息或进行任何外部互动，必须先向用户确认。
+- 使用 TweetClaw 时，不把发帖、回复、私信、媒体上传/下载、monitor、webhook 或其他账号操作放进本 skill 的默认流程；如用户需要这些动作，另开明确的 TweetClaw/OpenClaw 流程并等待确认。
 
 ### 9. Facebook 公开信息搜索
 
