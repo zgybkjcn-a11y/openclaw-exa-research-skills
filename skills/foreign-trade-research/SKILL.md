@@ -205,6 +205,7 @@ top [Product] companies in [Country] market share
 - `tavily_search` / `dual_search` / `web_search`：搜索 `site:x.com` 或 `site:twitter.com` 公开页面。
 - `exa_search`：不要再使用已废弃的 tweet 分类；可不指定 category，作为普通语义搜索补充。
 - `browser`：必要时打开 X/Twitter 页面做可视化验证；如页面要求登录或出现访问限制，先记入待登录清单，报告出完后提醒用户是否登录补采。
+- `@xquik/tweetclaw` OpenClaw 插件（可选）：当当前 workspace 已安装并允许 `explore` / `tweetclaw` 工具时，只把它用于 X/Twitter 公开信源补充，例如 tweet 搜索、回复检索、用户公开资料、followers/following 公开线索和用户公开时间线。先用 `explore` 确认只读 endpoint，再用 `tweetclaw` 记录查询词、endpoint、时间范围、公开链接和置信度。
 
 适合搜索的内容：
 
@@ -235,6 +236,7 @@ top [Product] companies in [Country] market share
 
 - 遇到登录后可见的账号、帖子、评论、互动、粉丝/关注列表、搜索结果时，先记录到“待登录清单”。
 - 报告出完后单独提醒用户：哪些 X/Twitter 内容需要登录、登录后预计能补充哪些信息；经用户同意后再登录补采。
+- 使用 TweetClaw 时，不把发帖、回复、私信、媒体上传/下载、monitor、webhook 或其他账号操作放进本 skill 的默认流程；如用户需要这些动作，另开明确的 TweetClaw/OpenClaw 流程并等待确认。
 
 #### Facebook 公开信息搜索
 
